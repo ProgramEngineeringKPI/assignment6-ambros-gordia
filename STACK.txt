@@ -1,0 +1,7 @@
+1. Parsing .obj (V)
+2. Geometry : (V)
+	a) struct Vertex Facet
+	b) intersection with triangle
+	c) intersection with rectangle(3d)
+3. KD-Tree (N)
+4. .bmp loading (N)
