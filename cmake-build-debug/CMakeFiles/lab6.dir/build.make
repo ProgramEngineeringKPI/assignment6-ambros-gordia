@@ -81,43 +81,69 @@ CMakeFiles/lab6.dir/src/main.cpp.o.provides: CMakeFiles/lab6.dir/src/main.cpp.o.
 CMakeFiles/lab6.dir/src/main.cpp.o.provides.build: CMakeFiles/lab6.dir/src/main.cpp.o
 
 
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o: CMakeFiles/lab6.dir/flags.make
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o: ../src/utils/Graphics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o -c /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/Graphics.cpp
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o: CMakeFiles/lab6.dir/flags.make
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o: ../src/utils/tracer/Tracer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o -c /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.cpp
 
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab6.dir/src/utils/Graphics.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/Graphics.cpp > CMakeFiles/lab6.dir/src/utils/Graphics.cpp.i
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.cpp > CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.i
 
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab6.dir/src/utils/Graphics.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/Graphics.cpp -o CMakeFiles/lab6.dir/src/utils/Graphics.cpp.s
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.cpp -o CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.s
 
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.requires:
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.requires:
 
-.PHONY : CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.requires
+.PHONY : CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.requires
 
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.provides: CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.requires
-	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.provides.build
-.PHONY : CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.provides
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.provides: CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.provides.build
+.PHONY : CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.provides
 
-CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.provides.build: CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o
+CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.provides.build: CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o
+
+
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o: CMakeFiles/lab6.dir/flags.make
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o: ../src/utils/rtree/RTree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o -c /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp
+
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp > CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.i
+
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp -o CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.s
+
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.requires:
+
+.PHONY : CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.requires
+
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.provides: CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.provides.build
+.PHONY : CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.provides
+
+CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.provides.build: CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o
 
 
 # Object files for target lab6
 lab6_OBJECTS = \
 "CMakeFiles/lab6.dir/src/main.cpp.o" \
-"CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o"
+"CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o" \
+"CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o"
 
 # External object files for target lab6
 lab6_EXTERNAL_OBJECTS =
 
 lab6: CMakeFiles/lab6.dir/src/main.cpp.o
-lab6: CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o
+lab6: CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o
+lab6: CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o
 lab6: CMakeFiles/lab6.dir/build.make
 lab6: CMakeFiles/lab6.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable lab6"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable lab6"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab6.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -126,7 +152,8 @@ CMakeFiles/lab6.dir/build: lab6
 .PHONY : CMakeFiles/lab6.dir/build
 
 CMakeFiles/lab6.dir/requires: CMakeFiles/lab6.dir/src/main.cpp.o.requires
-CMakeFiles/lab6.dir/requires: CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o.requires
+CMakeFiles/lab6.dir/requires: CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o.requires
+CMakeFiles/lab6.dir/requires: CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o.requires
 
 .PHONY : CMakeFiles/lab6.dir/requires
 

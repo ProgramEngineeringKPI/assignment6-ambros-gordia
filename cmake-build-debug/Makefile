@@ -150,32 +150,59 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/utils/Graphics.o: src/utils/Graphics.cpp.o
+src/utils/rtree/RTree.o: src/utils/rtree/RTree.cpp.o
 
-.PHONY : src/utils/Graphics.o
+.PHONY : src/utils/rtree/RTree.o
 
 # target to build an object file
-src/utils/Graphics.cpp.o:
-	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o
-.PHONY : src/utils/Graphics.cpp.o
+src/utils/rtree/RTree.cpp.o:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o
+.PHONY : src/utils/rtree/RTree.cpp.o
 
-src/utils/Graphics.i: src/utils/Graphics.cpp.i
+src/utils/rtree/RTree.i: src/utils/rtree/RTree.cpp.i
 
-.PHONY : src/utils/Graphics.i
+.PHONY : src/utils/rtree/RTree.i
 
 # target to preprocess a source file
-src/utils/Graphics.cpp.i:
-	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/Graphics.cpp.i
-.PHONY : src/utils/Graphics.cpp.i
+src/utils/rtree/RTree.cpp.i:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.i
+.PHONY : src/utils/rtree/RTree.cpp.i
 
-src/utils/Graphics.s: src/utils/Graphics.cpp.s
+src/utils/rtree/RTree.s: src/utils/rtree/RTree.cpp.s
 
-.PHONY : src/utils/Graphics.s
+.PHONY : src/utils/rtree/RTree.s
 
 # target to generate assembly for a file
-src/utils/Graphics.cpp.s:
-	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/Graphics.cpp.s
-.PHONY : src/utils/Graphics.cpp.s
+src/utils/rtree/RTree.cpp.s:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.s
+.PHONY : src/utils/rtree/RTree.cpp.s
+
+src/utils/tracer/Tracer.o: src/utils/tracer/Tracer.cpp.o
+
+.PHONY : src/utils/tracer/Tracer.o
+
+# target to build an object file
+src/utils/tracer/Tracer.cpp.o:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o
+.PHONY : src/utils/tracer/Tracer.cpp.o
+
+src/utils/tracer/Tracer.i: src/utils/tracer/Tracer.cpp.i
+
+.PHONY : src/utils/tracer/Tracer.i
+
+# target to preprocess a source file
+src/utils/tracer/Tracer.cpp.i:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.i
+.PHONY : src/utils/tracer/Tracer.cpp.i
+
+src/utils/tracer/Tracer.s: src/utils/tracer/Tracer.cpp.s
+
+.PHONY : src/utils/tracer/Tracer.s
+
+# target to generate assembly for a file
+src/utils/tracer/Tracer.cpp.s:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.s
+.PHONY : src/utils/tracer/Tracer.cpp.s
 
 # Help Target
 help:
@@ -189,9 +216,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/utils/Graphics.o"
-	@echo "... src/utils/Graphics.i"
-	@echo "... src/utils/Graphics.s"
+	@echo "... src/utils/rtree/RTree.o"
+	@echo "... src/utils/rtree/RTree.i"
+	@echo "... src/utils/rtree/RTree.s"
+	@echo "... src/utils/tracer/Tracer.o"
+	@echo "... src/utils/tracer/Tracer.i"
+	@echo "... src/utils/tracer/Tracer.s"
 .PHONY : help
 
 

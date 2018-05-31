@@ -85,10 +85,16 @@
 		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/main.cpp">
 			<Option target="lab6"/>
 		</Unit>
-		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/Graphics.cpp">
+		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp">
 			<Option target="lab6"/>
 		</Unit>
-		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/Graphics.h">
+		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h">
 			<Option target="lab6"/>
 		</Unit>
 		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/CMakeLists.txt">

@@ -3,4 +3,4 @@ project(lab6)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(lab6 src/main.cpp src/utils/Tracer.cpp src/utils/Tracer.h)
+add_executable(lab6 src/main.cpp src/utils/tracer/Tracer.cpp src/utils/tracer/Tracer.h src/utils/rtree/RTree.cpp src/utils/rtree/RTree.h)

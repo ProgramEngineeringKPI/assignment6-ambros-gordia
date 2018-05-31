@@ -44,8 +44,11 @@ class Tracer
 {
   public:
     void parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet> &faces);
-    bool intersectsTriangle(Facet facet, Ray ray);
-    bool intersectsRectangle(Vector up, Vector down, Ray ray);
+
+    //<Point of intersection, Normal>
+    pair<Vector, Ray> intersectsTriangle(Facet facet, Ray ray);
+
+    pair<Vector, Ray> intersectsRectangle(Vector up, Vector down, Ray ray);
 
   private:
     Vector local_to_world(Vector *child, Vector *parent);

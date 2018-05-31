@@ -1,1 +1,1 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/lab6.dir/src/main.cpp.o CMakeFiles/lab6.dir/src/utils/Graphics.cpp.o  -o lab6 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/lab6.dir/src/main.cpp.o CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o  -o lab6 
