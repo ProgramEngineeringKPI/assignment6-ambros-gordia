@@ -7,15 +7,17 @@ struct Rect {
     void blow(Vector v);
 
     Rect();
+    Rect(float ux, float uy, float uz, float dx, float dy, float dz);
 };
 
 struct Node {
 
     Rect bound;
     Node *l, *r;
-    vector<Vector> v;
+    int lvl;
+    vector<Vertex> v;
 
-    Node(Rect b, vector<Vector> &origin, int start, int end);
+    Node(int lvl, Rect b, vector<Vertex> &origin, int start, int end);
     Node();
 };
 
@@ -23,7 +25,15 @@ class RTree {
 
 private:
 
-    Node root;
+    const int MAX_CAPACITY = 2;
+
+    Node *root;
+
+    void recursiveBuild(Node *curr);
+
+    void destructBy(Node *curr);
+
+    char makeDecision(Node *curr);
 
 public:
 
