@@ -6,7 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/main.cpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/main.cpp
+utils/rtree/RTree.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
+
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp
+cmath
+-
+RTree.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
+
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
+../tracer/Tracer.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.cpp
+Tracer.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+fstream
+-
+string
+-
+vector
+-
+set
+-
 iostream
 -
 

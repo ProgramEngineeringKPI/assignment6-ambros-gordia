@@ -1,17 +1,12 @@
-#include "utils/tracer/Tracer.h"
-#include <iostream>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
-
-using namespace std;
+#include "utils/rtree/RTree.h"
 
 int main()
 {
-  vector<Vertex> verts;
+    vector<Vertex> verts;
   vector<Facet> faces;
-  Tracer t;
-  t.parseOBJ("./test/test.obj", verts, faces);
+    Tracer t;
+    RTree tree;
+  t.parseOBJ("/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/objects/cube.obj", verts, faces);
+    tree.build(verts);
 
 }

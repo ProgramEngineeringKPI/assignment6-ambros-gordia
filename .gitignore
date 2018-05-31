@@ -2,3 +2,4 @@
 .vscode/
 test/
 *.out
+./cmake-build-debug

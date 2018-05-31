@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <set>
 #include <iostream>
 
 using namespace std;
@@ -11,22 +12,24 @@ struct Vertex;
 struct Vector
 {
     Vector();
+    Vector(float X, float Y, float Z);
     Vector(const float coordinates[3]);
-    Vector(std::vector<float> vector);
+    Vector(vector<float> vector);
     float x, y, z;
 };
 
 struct Vertex
 {
-    Vertex(Vector vec, Facet *facet, int facet_count);
+    Vertex();
+    Vertex(Vector vec);
     Vector pt;
-    Facet *f;
-    int facet_count;
+    vector<Facet> facets;
 };
 
 struct Facet
 {
-    Vertex *vertices[3];
+    Facet(Vector v1, Vector v2, Vector v3);
+    Vector v[3];
 };
 
 struct Ray
@@ -34,11 +37,9 @@ struct Ray
     Vector pt, dir; // dir is local vector
 };
 
-template <typename T>
-void log(T content);
+template <typename T> void log(T content);
 
-template <typename T>
-vector<T> strsplit(string input, char delimiter);
+template <typename T> vector<T> strsplit(string input, char delimiter);
 
 class Tracer
 {
