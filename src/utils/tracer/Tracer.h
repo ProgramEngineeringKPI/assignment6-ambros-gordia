@@ -3,6 +3,7 @@
 #include <vector>
 #include <set>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -46,10 +47,10 @@ class Tracer
   public:
     void parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet> &faces);
 
-    //<Point of intersection, Normal>
-    pair<Vector, Ray> intersectsTriangle(Facet facet, Ray ray);
+    //pair<bool = result of computation, pair<Vector = point of intersection, Ray = normal>
+    pair<bool, pair<Vector, Ray> > intersectsTriangle(Facet facet, Ray ray);
 
-    pair<Vector, Ray> intersectsRectangle(Vector up, Vector down, Ray ray);
+    pair<bool, pair<Vector, Ray> > intersectsRectangle(Vector up, Vector down, Ray ray);
 
   private:
     Vector local_to_world(Vector *child, Vector *parent);

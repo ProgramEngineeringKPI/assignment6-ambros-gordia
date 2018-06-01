@@ -28,6 +28,7 @@ private:
     const int MAX_CAPACITY = 2;
 
     Node *root;
+    Tracer tracer;
 
     void recursiveBuild(Node *curr);
 
@@ -35,7 +36,14 @@ private:
 
     char makeDecision(Node *curr);
 
+    Node *recursiveSearch(Node *pos, Ray ray);
+
 public:
 
+    RTree(Tracer t);
+
     void build(vector<Vertex> &v);
+
+    //<bool = Result of intersection(false if not intersected, and true vise versa), Vector = normal>
+    pair<bool, Ray> find(Ray ray);
 };

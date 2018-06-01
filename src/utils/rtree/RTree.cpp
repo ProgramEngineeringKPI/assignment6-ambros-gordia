@@ -1,5 +1,22 @@
-#include <cmath>
 #include "RTree.h"
+
+bool cmpX(Vertex v1, Vertex v2) { return v1.pt.x > v2.pt.x; }
+bool cmpY(Vertex v1, Vertex v2) { return v1.pt.y > v2.pt.y; }
+bool cmpZ(Vertex v1, Vertex v2) { return v1.pt.z > v2.pt.z; }
+struct FacetComparator {
+    bool operator()(Facet f1, Facet f2) {
+        for (int i = 0; i < 3; i++) {
+            if (f1.v[i].x != f2.v[i].x) return f1.v[i].x > f2.v[i].x;
+            if (f1.v[i].y != f2.v[i].y) return f1.v[i].y > f2.v[i].y;
+            if (f1.v[i].z != f2.v[i].z) return f1.v[i].z > f2.v[i].z;
+        }
+        return true;
+    }
+};
+
+template<typename T> inline T sqr(T t) { return t * t; }
+
+float dist(Vector v1, Vector v2) { return sqrt(sqr(v1.x - v2.x) + sqr(v1.y - v2.y) + sqr(v1.z - v2.z)); }
 
 Rect::Rect() {
     assigned = false;
@@ -23,10 +40,6 @@ void Rect::blow(Vector v) {
     }
 }
 
-bool cmpX(Vertex v1, Vertex v2) { return v1.pt.x > v2.pt.x; }
-bool cmpY(Vertex v1, Vertex v2) { return v1.pt.y > v2.pt.y; }
-bool cmpZ(Vertex v1, Vertex v2) { return v1.pt.z > v2.pt.z; }
-
 Node::Node(int LVL, Rect b, vector<Vertex> &origin, int start, int end): bound(b), lvl(LVL), l(nullptr), r(nullptr) {
     for (int i = start; i < end; i++) v.push_back(origin[i]);
 }
@@ -35,6 +48,8 @@ Node::Node() {
     l = r = nullptr;
     lvl = 0;
 }
+
+RTree::RTree(Tracer t): tracer(t) {}
 
 void RTree::destructBy(Node *curr) {
     float mid;
@@ -115,6 +130,20 @@ void RTree::recursiveBuild(Node *curr) {
     if (curr->r != nullptr) recursiveBuild(curr->r);
 }
 
+Node* RTree::recursiveSearch(Node *pos, Ray ray) {
+    if (pos->l == nullptr && pos->r == nullptr) return pos;
+    pair<bool, pair<Vector, Ray> > resL = tracer.intersectsRectangle(Vector(), Vector(), ray),
+                                   resR = tracer.intersectsRectangle((pos->r)->bound.up, (pos->r)->bound.down, ray);
+    if (resL.first && resR.first) {
+        float distL = dist(ray.pt, resL.second.first),
+              distR = dist(ray.pt, resR.second.first);
+        if (distL < distR) return recursiveSearch(pos->l, ray);
+                      else return recursiveSearch(pos->r, ray);
+    } else if (resL.first && !resR.first) return recursiveSearch(pos->l, ray);
+    else if (!resL.first && resR.first) return recursiveSearch(pos->r, ray);
+    return pos;
+}
+
 void RTree::build(vector<Vertex> &v) {
     root = new Node();
     for (int i = 0; i < v.size(); i++) {
@@ -122,4 +151,35 @@ void RTree::build(vector<Vertex> &v) {
         root->v.push_back(v[i].pt);
     }
     recursiveBuild(root);
+}
+
+pair<bool, Ray> RTree::find(Ray ray) {
+    Node *result = recursiveSearch(root, ray);
+    pair<bool, Ray> ans;
+    ans.first = false;
+
+    if (result == nullptr) return ans;
+
+    set<Facet, FacetComparator> st;
+    for (int i = 0; i < result->v.size(); i++)
+        for (int j = 0; j < result->v[i].facets.size(); j++)
+            st.insert(result->v[i].facets[j]);
+
+    vector< pair<float, Ray> > pt;
+    set<Facet, FacetComparator>::iterator it;
+    for (it = st.begin(); it != st.end(); it++) {
+        pair<bool, pair<Vector, Ray> > inter = tracer.intersectsTriangle(*it, ray);
+        if (inter.first) pt.push_back( { dist(ray.pt, inter.second.first), inter.second.second } );
+    }
+
+    float mnDistRay = INFINITY;
+    Ray mnRay;
+    for (int i = 0; i < pt.size(); i++)
+        if (pt[i].first < mnDistRay) {
+            mnDistRay = pt[i].first;
+            mnRay = pt[i].second;
+        }
+    if (mnDistRay == INFINITY) ans.first = false;
+    ans.second = mnRay;
+    return ans;
 }

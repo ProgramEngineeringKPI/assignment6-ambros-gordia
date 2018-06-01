@@ -100,6 +100,16 @@ void log(T content)
   cout << content << endl;
 }
 
+pair<bool, pair<Vector, Ray> > Tracer::intersectsRectangle(Vector up, Vector down, Ray ray) {
+  pair<bool, pair<Vector, Ray> > ans;
+  return ans;
+}
+
+pair<bool, pair<Vector, Ray> > Tracer::intersectsTriangle(Facet facet, Ray ray) {
+  pair<bool, pair<Vector, Ray> > ans;
+  return ans;
+}
+
 template <class T>
 vector<T> strsplit(string input, char delimiter)
 {

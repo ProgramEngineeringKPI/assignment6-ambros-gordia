@@ -11,8 +11,6 @@ utils/rtree/RTree.h
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp
-cmath
--
 RTree.h
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
 
@@ -34,5 +32,7 @@ vector
 set
 -
 iostream
+-
+cmath
 -
 
