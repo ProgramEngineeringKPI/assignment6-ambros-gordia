@@ -25,6 +25,7 @@ void Rect::blow(Vector v) {
 
 bool cmpX(Vertex v1, Vertex v2) { return v1.pt.x > v2.pt.x; }
 bool cmpY(Vertex v1, Vertex v2) { return v1.pt.y > v2.pt.y; }
+bool cmpZ(Vertex v1, Vertex v2) { return v1.pt.z > v2.pt.z; }
 
 Node::Node(int LVL, Rect b, vector<Vertex> &origin, int start, int end): bound(b), lvl(LVL), l(nullptr), r(nullptr) {
     for (int i = start; i < end; i++) v.push_back(origin[i]);
@@ -39,7 +40,8 @@ void RTree::destructBy(Node *curr) {
     float mid;
     char mode = makeDecision(curr);
     if (mode == 'x') {
-        mid = (curr->bound.up.x + curr->bound.down.x) / 2;
+        sort(curr->v.begin(), curr->v.end(), cmpX);
+        mid = curr->v[curr->v.size() / 2].pt.x;
         curr->l = new Node(curr->lvl + 1,
                            Rect(curr->bound.up.x, curr->bound.up.y, curr->bound.up.z, mid, curr->bound.down.y, curr->bound.down.z),
                            curr->v,
@@ -51,7 +53,8 @@ void RTree::destructBy(Node *curr) {
                            curr->v.size() / 2,
                            curr->v.size());
     } else if (mode == 'y') {
-        mid = (curr->bound.up.y + curr->bound.down.y) / 2;
+        sort(curr->v.begin(), curr->v.end(), cmpY);
+        mid = curr->v[curr->v.size() / 2].pt.y;
         curr->l = new Node(curr->lvl + 1,
                            Rect(curr->bound.up.x, curr->bound.up.y, curr->bound.up.z, curr->bound.down.x, mid, curr->bound.down.z),
                            curr->v,
@@ -63,7 +66,8 @@ void RTree::destructBy(Node *curr) {
                            curr->v.size() / 2,
                            curr->v.size());
     } else if (mode == 'z') {
-        mid = (curr->bound.up.z + curr->bound.down.z) / 2;
+        sort(curr->v.begin(), curr->v.end(), cmpZ);
+        mid = curr->v[curr->v.size() / 2].pt.z;
         curr->l = new Node(curr->lvl + 1,
                            Rect(curr->bound.up.x, curr->bound.up.y, curr->bound.up.z, curr->bound.down.x, curr->bound.down.y, mid),
                            curr->v,
