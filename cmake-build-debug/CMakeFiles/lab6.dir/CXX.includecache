@@ -7,8 +7,8 @@
 #IncludeRegexTransform: 
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/main.cpp
-utils/tracer/Tracer.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+utils/rtree/RTree.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp
 cmath
