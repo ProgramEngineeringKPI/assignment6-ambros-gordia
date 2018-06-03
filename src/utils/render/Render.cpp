@@ -1,8 +1,9 @@
-#include "src/utils/render/Render.h"
+#include "Render.h"
 
 Tracer tr;
+Camera main_camera;
 
-void Render(const char *input_file, string output_file)
+void Render(const char *input_file, string output_file, Camera &main_camera)
 {
   vector<Vertex> vertices;
   vector<Facet> faces;
@@ -48,10 +49,10 @@ void Render(const char *input_file, string output_file)
       int i = 0;
       for (; i < faces.size(); i++)
       {
-        Vector v = tr.intersectsTriangle(faces[i], ray);
-        if (v)
+        pair<Vector, Vector> v = tr.intersectsTriangle(faces[i], ray);
+        if (v.first)
         {
-          float dist = (v - main_camera.position).length();
+          float dist = (v.first - main_camera.position).length();
           *(buf + (y * height + x) * colorBit + 1) = (char)(dist * 0xFF);
           break;
         }
@@ -64,10 +65,4 @@ void Render(const char *input_file, string output_file)
   }
   out.write(buf, sizeof(buf) * 512 * 512);
   out.close();
-}
-
-void Render(const char *input_file, string output_file, Camera &camera)
-{
-  main_camera = camera;
-  Render(input_file, output_file);
 }

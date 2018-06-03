@@ -169,17 +169,16 @@ pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
       y = t * ray.direction.y + ray.origin.y,
       z = t * ray.direction.z + ray.origin.z;
 
-    Vector ans(x, y, z);
-    Vector normal(A, B, C);
-    normal = normal.normalize();
-    ans.intersects = pointInTriangle(Vector(x, y, z), facet.v[0], facet.v[1], facet.v[2]);
-    return { ans, normal };
+  Vector ans(x, y, z);
+  Vector normal(A, B, C);
+  normal = normal.normalize();
+  ans.intersects = pointInTriangle(Vector(x, y, z), facet.v[0], facet.v[1], facet.v[2]);
+  return {ans, normal};
 }
 
 pair<Vector, Vector> Tracer::intersectsRectangle(Vector up, Vector down, Ray &ray)
 {
-    return Vector();
-    return { Vector(), Vector() };
+  return {Vector(), Vector()};
 }
 
 template <typename T>
@@ -221,13 +220,15 @@ bool sign(T value)
   return (value > 0) - (value < 0);
 }
 
-bool Tracer::pointInTriangle(Vector x, Vector a, Vector b, Vector c) {
-    return squareOfTriangle(a, b, c) == squareOfTriangle(x, a, b) +
-                                        squareOfTriangle(x, b, c) +
-                                        squareOfTriangle(x, a, c);
+bool Tracer::pointInTriangle(Vector x, Vector a, Vector b, Vector c)
+{
+  return squareOfTriangle(a, b, c) == squareOfTriangle(x, a, b) +
+                                          squareOfTriangle(x, b, c) +
+                                          squareOfTriangle(x, a, c);
 }
 
-float Tracer::squareOfTriangle(Vector a, Vector b, Vector c) {
-    Vector x = b - a, y = c - a;
-    return abs(x.cross(y).length()) / 2;
+float Tracer::squareOfTriangle(Vector a, Vector b, Vector c)
+{
+  Vector x = b - a, y = c - a;
+  return abs(x.cross(y).length()) / 2;
 }

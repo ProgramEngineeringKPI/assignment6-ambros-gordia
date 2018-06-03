@@ -1,5 +1,3 @@
-#include "src/utils/tracer/Tracer.h"
+#include "../tracer/Tracer.h"
 
-void Render(const char *input_file, string output_file);
-
-void Render(const char *input_file, string output_file, Camera &camera);
+void Render(const char *input_file, string output_file, Camera &main_camera);

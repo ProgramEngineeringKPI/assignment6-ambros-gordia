@@ -1,9 +1,9 @@
 .idea/
 .idea/workspace.xml
-vscode/
+.vscode/
 test/
-.out
+*.out
+*.bmp
 .cmake-build-debug/
 CMakeLists.txt
 STACK.txt
-render.bmp
