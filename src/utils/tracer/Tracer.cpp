@@ -1,6 +1,4 @@
-#include "src/utils/tracer/Tracer.h"
-
-using namespace std;
+#include "Tracer.h"
 
 Vector::Vector() : x(0), y(0), z(0) {}
 
@@ -195,6 +193,7 @@ Vector Tracer::intersectsTriangle(Facet &facet, Ray &ray)
 
 Vector Tracer::intersectsRectangle(Vector up, Vector down, Ray &ray)
 {
+    return Vector();
 }
 
 template <typename T>
