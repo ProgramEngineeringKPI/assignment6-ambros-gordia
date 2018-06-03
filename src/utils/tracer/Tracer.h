@@ -66,7 +66,7 @@ struct Camera
 	float
 		FOV = 60,	// degrees
 		FOVmm = 200; // millimeters
-};
+} main_camera;
 
 template <typename T>
 void log(T content);
