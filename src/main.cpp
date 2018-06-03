@@ -1,4 +1,4 @@
-#include "utils/tracer/Tracer.h"
+#include "utils/rtree/RTree.h"
 
 void Test1() // testing vector struct
 {
@@ -10,6 +10,16 @@ void Test1() // testing vector struct
 		cout << "\033[30;42m:Passed:\033[0m" << endl;
 	else
 		cout << "\033[30;41m:Errored:\033[0m" << endl;
+}
+
+void Test2()
+{
+	string path;
+	cout << "Write file path:\n> ";
+	// cin >> path;
+	path = "src/objects/cube.obj";
+	Tracer t;
+	t.Render(path.c_str(), "render.bmp");
 }
 
 void Test3() // testing intersection
@@ -38,5 +48,6 @@ void Test3() // testing intersection
 
 int main()
 {
+	Test2();
 	return 0;
 }
