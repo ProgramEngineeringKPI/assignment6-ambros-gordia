@@ -85,16 +85,15 @@ class Tracer
 	void parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet> &faces);
 
 	//<Point of intersection, Normal>
-	Vector intersectsTriangle(Facet &facet, Ray &ray);
-	Vector intersectsRectangle(Vector up, Vector down, Ray &ray);
-
-	void Render(const char *input_file, string output_file);
-	void Render(const char *input_file, string output_file, Camera &camera);
-
-	// pair<Vector, Ray> intersectsTriangle(Facet facet, Ray ray); // nope, its not useful
-	// pair<Vector, Ray> intersectsRectangle(Vector up, Vector down, Ray ray);
+	pair<Vector, Vector> intersectsTriangle(Facet &facet, Ray &ray);
+	pair<Vector, Vector> intersectsRectangle(Vector up, Vector down, Ray &ray);
 
   private:
+
+    bool pointInTriangle(Vector x, Vector a, Vector b, Vector c);
+
+    float squareOfTriangle(Vector a, Vector b, Vector c);
+
 	Vector local_to_world(Vector *child, Vector *parent);
 	Vector world_to_local(Vector *child, Vector *parent); // child & parent should be in local coords
 };
