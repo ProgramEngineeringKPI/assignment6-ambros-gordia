@@ -54,20 +54,6 @@ struct Ray
 	Vector origin, direction; // dir is local vector
 };
 
-struct Camera
-{
-	Vector
-		position = Vector(10, 10, 10),
-		direction = Vector(-1, -1, -1);
-	// normal = Vector(0.5, 1, 0);
-	int
-		resX = 512,
-		resY = 512;
-	float
-		FOV = 60,	// degrees
-		FOVmm = 200; // millimeters
-};
-
 template <typename T>
 void log(T content);
 template <typename T>
@@ -87,9 +73,6 @@ class Tracer
 	//<Point of intersection, Normal>
 	Vector intersectsTriangle(Facet &facet, Ray &ray);
 	Vector intersectsRectangle(Vector up, Vector down, Ray &ray);
-
-	void Render(const char *input_file, string output_file);
-	void Render(const char *input_file, string output_file, Camera &camera);
 
 	// pair<Vector, Ray> intersectsTriangle(Facet facet, Ray ray); // nope, its not useful
 	// pair<Vector, Ray> intersectsRectangle(Vector up, Vector down, Ray ray);
