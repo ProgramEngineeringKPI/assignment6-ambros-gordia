@@ -182,6 +182,7 @@ pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
 
 pair<Vector, Vector> Tracer::intersectsRectangle(Vector up, Vector down, Ray &ray)
 {
+    return { Vector(), Vector() };
 }
 
 template <typename T>
@@ -231,5 +232,5 @@ bool Tracer::pointInTriangle(Vector x, Vector a, Vector b, Vector c) {
 
 float Tracer::squareOfTriangle(Vector a, Vector b, Vector c) {
     Vector x = b - a, y = c - a;
-    return abs(x.cross(y).length()) / 2F;
+    return abs(x.cross(y).length()) / 2;
 }
