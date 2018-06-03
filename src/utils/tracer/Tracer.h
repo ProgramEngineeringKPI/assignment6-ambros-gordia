@@ -57,15 +57,15 @@ struct Ray
 struct Camera
 {
 	Vector
-			position = Vector(10, 10, 10),
-			direction = Vector(-1, -1, -1);
+			position = Vector(-2, 0, 0),
+			direction = Vector(1, 0, 0);
 	// normal = Vector(0.5, 1, 0);
 	int
 			resX = 512,
 			resY = 512;
 	float
 			FOV = 60,		 // degrees
-			FOVmm = 200; // millimeters
+			FOVmm = 50; // millimeters
 };
 
 template <typename T>

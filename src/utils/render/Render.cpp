@@ -35,17 +35,32 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
   {
     for (int x = 0; x < main_camera.resX; x++)
     {
-      float
-          xNorm = (x - main_camera.resX / 2) / (float)main_camera.resX,
-          yNorm = (y - main_camera.resY / 2) / (float)main_camera.resY,
-          dist_to_plane = (main_camera.position - plane_origin).length(),
-          FOVrad = main_camera.FOV / 180.f * M_PI,
-          realH = (float)(dist_to_plane * tanf(FOVrad));
-      Vector
-          position_on_plane = Vector(xNorm * realH / 2, yNorm * realH / 2, 0) + plane_origin,
-          rayDir = position_on_plane - main_camera.position;
 
-      Ray ray = Ray(main_camera.position, rayDir);
+      float
+          xx = (main_camera.position.x - main_camera.resX + x),
+          zz = (main_camera.position.z - main_camera.resY + y);
+      //          xNorm = (x - main_camera.resX / 2) / (float)main_camera.resX,
+      //          yNorm = (y - main_camera.resY / 2) / (float)main_camera.resY,
+      //          dist_to_plane = (main_camera.position - plane_origin).length(),
+      //          FOVrad = main_camera.FOV / 180.f * M_PI,
+      //          realH = (float)(dist_to_plane * tanf(FOVrad));
+      //      Vector
+      //          position_on_plane = Vector(xNorm * realH / 2, yNorm * realH / 2, 0) + plane_origin,
+      //          rayDir = position_on_plane - main_camera.position;
+      //    Ray ray = Ray(main_camera.position, rayDir);
+      Ray ray = Ray(main_camera.position, Vector(xx, main_camera.position.y + main_camera.FOVmm, zz));
+
+      // float
+      //     xNorm = (x - main_camera.resX / 2) / (float)main_camera.resX,
+      //     yNorm = (y - main_camera.resY / 2) / (float)main_camera.resY,
+      //     dist_to_plane = (main_camera.position - plane_origin).length(),
+      //     FOVrad = main_camera.FOV / 180.f * M_PI,
+      //     realH = (float)(dist_to_plane * tanf(FOVrad));
+      // Vector
+      //     position_on_plane = Vector(xNorm * realH / 2, yNorm * realH / 2, 0) + plane_origin,
+      //     rayDir = position_on_plane - main_camera.position;
+
+      // Ray ray = Ray(main_camera.position, rayDir);
       int i = 0;
       for (; i < faces.size(); i++)
       {
