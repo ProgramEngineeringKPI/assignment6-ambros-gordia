@@ -45,7 +45,7 @@ struct Vertex
 
 struct Facet
 {
-	Facet(Vector &v1, Vector &v2, Vector &v3);
+	Facet(Vector v1, Vector v2, Vector v3);
 	Vector v[3];
 	Vector n;
 };
@@ -89,7 +89,7 @@ public:
 
 	// pair<Vector, Ray> intersectsTriangle(Facet facet, Ray ray); // nope, its not useful
 	// pair<Vector, Ray> intersectsRectangle(Vector up, Vector down, Ray ray);
-	pair<Vector, Vector> intersectsTriangle(Facet &facet, Ray &ray);
+	pair<Vector, Vector> intersectsTriangle(Facet facet, Ray &ray);
 	pair<Vector, Vector> intersectsRectangle(Vector up, Vector down, Ray &ray);
 
 private:

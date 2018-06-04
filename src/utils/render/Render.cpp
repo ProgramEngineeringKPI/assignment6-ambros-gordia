@@ -11,8 +11,8 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
   ofstream out(output_file, ios::binary);
 
   // file header
-  unsigned short width = 512;
-  unsigned short height = 512;
+  unsigned short width = main_camera.resX;
+  unsigned short height = main_camera.resY;
   unsigned short colorBit = 3;
   unsigned int size = width * height * colorBit;
   unsigned int offset = 27;
@@ -73,6 +73,7 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
       int i = 0;
       for (; i < faces.size(); i++)
       {
+        // pair<Vector, Vector> v = tr.intersectsRectangle(Vector(1, 1, 1), Vector(-1, -1, -1), ray);
         pair<Vector, Vector> v = tr.intersectsTriangle(faces[i], ray);
         if (v.first && main_camera.direction.angle(v.second) > to_rad(90))
         {
