@@ -1,17 +1,13 @@
-#include "utils/tracer/Tracer.h"
-#include <iostream>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
+#include "utils/render/Render.h"
 
-using namespace std;
+void Test0()
+{
+  Camera main_camera = Camera();
+  Render("src/objects/cube.obj", "sphere.bmp", main_camera);
+}
 
 int main()
 {
-  vector<Vertex> verts;
-  vector<Facet> faces;
-  Tracer t;
-  t.parseOBJ("./test/test.obj", verts, faces);
-
+  Test0();
+  return 0;
 }
