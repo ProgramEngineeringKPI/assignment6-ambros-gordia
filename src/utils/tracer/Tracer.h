@@ -59,14 +59,14 @@ struct Ray
 struct Camera
 {
 	Vector
-			position = Vector(5, 2, 1.5),
-			direction = Vector(-1, -0.4, -0.2),
+			position = Vector(5, 4, 1.5),
+			direction = Vector(-1, -0.7, -0.2),
 			top = Vector(0, 0, 1); // this vector is always lookin' upwards
 	int
 			resX = 512,
 			resY = 512;
 	float
-			FOV = 30,		// degrees
+			FOV = 60,		// degrees
 			FOVmm = 50, // millimeters
 			size = 1;
 };

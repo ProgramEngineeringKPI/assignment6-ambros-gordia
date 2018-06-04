@@ -151,7 +151,7 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
 
 pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
 {
-  const float E = 1e-51;
+  const float E = 1e-5;
   float
       x0 = facet.v[0].x,
       y0 = facet.v[0].y,

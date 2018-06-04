@@ -34,7 +34,7 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
   cout << dist << endl;
   Vector right = main_camera.direction.cross(main_camera.top).normalize();
 
-  for (int y = main_camera.resY - 1; y >= 0 ; y--)
+  for (int y = main_camera.resY - 1; y >= 0; y--)
   {
     for (int x = 0; x < main_camera.resX; x++)
     {
@@ -63,7 +63,7 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
       float realY = (y - main_camera.resY / 2) / (float)main_camera.resY;
 
       Vector dx = right * realX;
-      Vector dy = main_camera.direction.cross(right).normalize() * realY;
+      Vector dy = right.cross(main_camera.direction).normalize() * realY;
 
       Vector raydir = dx + dy + main_camera.direction;
 
@@ -78,15 +78,15 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
         {
           // float dist = (v.first - main_camera.position).length();
           float shade = sinf(v.second.angle(ray.direction));
-          // *(buf + (y * height + x) * colorBit + 0) = (char)(shade * 0xFF);
-          *(buf + (x * height + y) * colorBit + 1) = (char)(0xFF - shade * 0xFF);
-          // *(buf + (y * height + x) * colorBit + 2) = (char)(shade * 0xFF);
+          *(buf + (y * height + x) * colorBit + 0) = (char)(0xFF - shade * 0xFF);
+          *(buf + (y * height + x) * colorBit + 1) = (char)(0xFF - shade * 0xFF);
+          *(buf + (y * height + x) * colorBit + 2) = (char)(0xFF - shade * 0xFF);
           break;
         }
       }
       if (i >= faces.size())
       {
-        *(buf + (y * height + x) * colorBit) = (char)0x00;
+        *(buf + (y * height + x) * colorBit) = (char)0x4F;
       }
     }
   }

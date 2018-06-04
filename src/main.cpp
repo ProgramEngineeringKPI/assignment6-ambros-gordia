@@ -3,7 +3,7 @@
 void Test0()
 {
   Camera main_camera = Camera();
-  Render("src/objects/sphere.obj", "sphere.bmp", main_camera);
+  Render("src/objects/cube.obj", "sphere.bmp", main_camera);
 }
 
 int main()
