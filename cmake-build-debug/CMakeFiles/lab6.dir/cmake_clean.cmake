@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/lab6.dir/src/main.cpp.o"
   "CMakeFiles/lab6.dir/src/utils/tracer/Tracer.cpp.o"
   "CMakeFiles/lab6.dir/src/utils/rtree/RTree.cpp.o"
+  "CMakeFiles/lab6.dir/src/utils/render/Render.cpp.o"
   "lab6.pdb"
   "lab6"
 )

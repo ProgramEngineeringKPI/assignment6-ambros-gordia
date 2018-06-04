@@ -1,6 +1,11 @@
 .idea/
+.idea/workspace.xml
 .vscode/
 test/
 *.out
 ./cmake-build-debug
 ./workspace.xml
+*.bmp
+.cmake-build-debug/
+CMakeLists.txt
+STACK.txt

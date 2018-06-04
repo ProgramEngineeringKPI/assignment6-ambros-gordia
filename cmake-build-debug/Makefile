@@ -150,6 +150,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/utils/render/Render.o: src/utils/render/Render.cpp.o
+
+.PHONY : src/utils/render/Render.o
+
+# target to build an object file
+src/utils/render/Render.cpp.o:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/render/Render.cpp.o
+.PHONY : src/utils/render/Render.cpp.o
+
+src/utils/render/Render.i: src/utils/render/Render.cpp.i
+
+.PHONY : src/utils/render/Render.i
+
+# target to preprocess a source file
+src/utils/render/Render.cpp.i:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/render/Render.cpp.i
+.PHONY : src/utils/render/Render.cpp.i
+
+src/utils/render/Render.s: src/utils/render/Render.cpp.s
+
+.PHONY : src/utils/render/Render.s
+
+# target to generate assembly for a file
+src/utils/render/Render.cpp.s:
+	$(MAKE) -f CMakeFiles/lab6.dir/build.make CMakeFiles/lab6.dir/src/utils/render/Render.cpp.s
+.PHONY : src/utils/render/Render.cpp.s
+
 src/utils/rtree/RTree.o: src/utils/rtree/RTree.cpp.o
 
 .PHONY : src/utils/rtree/RTree.o
@@ -216,6 +243,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/utils/render/Render.o"
+	@echo "... src/utils/render/Render.i"
+	@echo "... src/utils/render/Render.s"
 	@echo "... src/utils/rtree/RTree.o"
 	@echo "... src/utils/rtree/RTree.i"
 	@echo "... src/utils/rtree/RTree.s"

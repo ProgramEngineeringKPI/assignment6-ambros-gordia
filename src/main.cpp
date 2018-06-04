@@ -1,12 +1,12 @@
-#include "utils/rtree/RTree.h"
+#include "utils/render/Render.h"
+
+void Test0()
+{
+  Camera main_camera = Camera();
+  Render("/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/objects/cube.obj", "/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/sphere.bmp", main_camera);
+}
 
 int main()
 {
-    vector<Vertex> verts;
-    vector<Facet> faces;
-    Tracer tracer;
-    RTree tree(tracer);
-    tracer.parseOBJ("/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/objects/cube.obj", verts, faces);
-    tree.build(verts);
-    tree.find(Ray());
+  Test0();
 }

@@ -7,7 +7,15 @@
 #IncludeRegexTransform: 
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/main.cpp
-utils/rtree/RTree.h
+utils/render/Render.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h
+
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.cpp
+Render.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h
+
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h
+../rtree/RTree.h
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp
@@ -33,6 +41,6 @@ set
 -
 iostream
 -
-cmath
+math.h
 -
 

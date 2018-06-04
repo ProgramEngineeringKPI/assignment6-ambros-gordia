@@ -85,6 +85,12 @@
 		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/main.cpp">
 			<Option target="lab6"/>
 		</Unit>
+		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h">
+			<Option target="lab6"/>
+		</Unit>
 		<Unit filename="/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp">
 			<Option target="lab6"/>
 		</Unit>
