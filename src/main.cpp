@@ -2,12 +2,12 @@
 
 void Test0()
 {
-	Camera main_camera = Camera();
-	Render("src/objects/cube.obj", "render.bmp", main_camera);
+  Camera main_camera = Camera();
+  Render("src/objects/sphere.obj", "sphere.bmp", main_camera);
 }
 
 int main()
 {
-	Test0();
-	return 0;
+  Test0();
+  return 0;
 }

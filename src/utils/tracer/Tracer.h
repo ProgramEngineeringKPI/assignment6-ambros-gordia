@@ -23,11 +23,13 @@ struct Vector
 	Vector operator+(Vector &v);
 	Vector operator-(Vector &v);
 	Vector operator*(float num);
+	Vector operator/(float num);
 	bool operator==(Vector &v);
 	float dot(Vector &v);
 	Vector normalize();
 	float length();
 	Vector cross(Vector &v);
+	float angle(Vector &v);
 
 	void print();
 	bool intersects = false;
@@ -57,15 +59,16 @@ struct Ray
 struct Camera
 {
 	Vector
-			position = Vector(-2, 0, 0),
-			direction = Vector(1, 0, 0);
-	// normal = Vector(0.5, 1, 0);
+			position = Vector(5, 2, 1.5),
+			direction = Vector(-1, -0.4, -0.2),
+			top = Vector(0, 0, 1); // this vector is always lookin' upwards
 	int
 			resX = 512,
 			resY = 512;
 	float
-			FOV = 60,		 // degrees
-			FOVmm = 50; // millimeters
+			FOV = 30,		// degrees
+			FOVmm = 50, // millimeters
+			size = 1;
 };
 
 template <typename T>
@@ -73,11 +76,11 @@ void log(T content);
 template <typename T>
 void log(T content[]);
 
-template <typename T>
-vector<T> strsplit(string input, char delimiter);
+float to_rad(float deg);
+float to_deg(float rad);
 
 template <typename T>
-bool sign(T value);
+vector<T> strsplit(string input, char delimiter);
 
 class Tracer
 {
@@ -91,9 +94,5 @@ public:
 
 private:
 	bool pointInTriangle(Vector x, Vector a, Vector b, Vector c);
-
-	float squareOfTriangle(Vector a, Vector b, Vector c);
-
-	Vector local_to_world(Vector *child, Vector *parent);
-	Vector world_to_local(Vector *child, Vector *parent); // child & parent should be in local coords
+	float areaOfTriangle(Vector a, Vector b, Vector c);
 };

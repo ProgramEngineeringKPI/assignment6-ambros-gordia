@@ -27,18 +27,17 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
   out.write((char *)&filehead, 12);
   out.seekp(offset, ios::beg);
 
-  Vector plane_origin = Vector(main_camera.direction.normalize() + main_camera.position);
-
   char *buf = new char[size];
 
-  for (int y = 0; y < main_camera.resY; y++)
+  float dist = main_camera.size / (2 * tanf((to_rad(main_camera.FOV) / 2)));
+  Vector plane_vec = main_camera.direction.normalize() * dist;
+  cout << dist << endl;
+  Vector right = main_camera.direction.cross(main_camera.top).normalize();
+
+  for (int y = main_camera.resY - 1; y >= 0 ; y--)
   {
     for (int x = 0; x < main_camera.resX; x++)
     {
-
-      float
-          xx = (main_camera.position.x - main_camera.resX + x),
-          zz = (main_camera.position.z - main_camera.resY + y);
       //          xNorm = (x - main_camera.resX / 2) / (float)main_camera.resX,
       //          yNorm = (y - main_camera.resY / 2) / (float)main_camera.resY,
       //          dist_to_plane = (main_camera.position - plane_origin).length(),
@@ -48,7 +47,7 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
       //          position_on_plane = Vector(xNorm * realH / 2, yNorm * realH / 2, 0) + plane_origin,
       //          rayDir = position_on_plane - main_camera.position;
       //    Ray ray = Ray(main_camera.position, rayDir);
-      Ray ray = Ray(main_camera.position, Vector(xx, main_camera.position.y + main_camera.FOVmm, zz));
+      // Ray ray = Ray(main_camera.position, Vector(xx, main_camera.position.y + main_camera.FOVmm, zz));
 
       // float
       //     xNorm = (x - main_camera.resX / 2) / (float)main_camera.resX,
@@ -60,21 +59,34 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
       //     position_on_plane = Vector(xNorm * realH / 2, yNorm * realH / 2, 0) + plane_origin,
       //     rayDir = position_on_plane - main_camera.position;
 
-      // Ray ray = Ray(main_camera.position, rayDir);
+      float realX = (x - main_camera.resX / 2) / (float)main_camera.resX;
+      float realY = (y - main_camera.resY / 2) / (float)main_camera.resY;
+
+      Vector dx = right * realX;
+      Vector dy = main_camera.direction.cross(right).normalize() * realY;
+
+      Vector raydir = dx + dy + main_camera.direction;
+
+      Ray ray = Ray(main_camera.position, raydir);
+      float deg = 0;
+
       int i = 0;
       for (; i < faces.size(); i++)
       {
         pair<Vector, Vector> v = tr.intersectsTriangle(faces[i], ray);
-        if (v.first)
+        if (v.first && main_camera.direction.angle(v.second) > to_rad(90))
         {
-          float dist = (v.first - main_camera.position).length();
-          *(buf + (y * height + x) * colorBit + 1) = (char)(dist * 0xFF);
+          // float dist = (v.first - main_camera.position).length();
+          float shade = sinf(v.second.angle(ray.direction));
+          // *(buf + (y * height + x) * colorBit + 0) = (char)(shade * 0xFF);
+          *(buf + (x * height + y) * colorBit + 1) = (char)(0xFF - shade * 0xFF);
+          // *(buf + (y * height + x) * colorBit + 2) = (char)(shade * 0xFF);
           break;
         }
       }
       if (i >= faces.size())
       {
-        *(buf + (y * height + x) * colorBit) = (char)0x0F;
+        *(buf + (y * height + x) * colorBit) = (char)0x00;
       }
     }
   }

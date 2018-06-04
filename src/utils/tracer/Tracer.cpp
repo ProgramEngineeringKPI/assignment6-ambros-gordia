@@ -37,6 +37,11 @@ Vector Vector::operator*(float num)
   return Vector(x * num, y * num, z * num);
 }
 
+Vector Vector::operator/(float num)
+{
+  return Vector(x / num, y / num, z / num);
+}
+
 bool Vector::operator==(Vector &v)
 {
   return (x == v.x) && (y == v.y) && (z == v.z);
@@ -64,6 +69,11 @@ Vector Vector::normalize()
 float Vector::length()
 {
   return sqrtf(x * x + y * y + z * z);
+}
+
+float Vector::angle(Vector &v)
+{
+  return acosf(dot(v) / (length() * v.length()));
 }
 
 void Vector::print()
@@ -160,7 +170,6 @@ pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
           x0 * ((y2 - y0) * (z1 - z0) - (y1 - y0) * (z2 - z0)) +
           y0 * ((x1 - x0) * (z2 - z0) - (x2 - x0) * (z1 - z0)) +
           z0 * ((y1 - y0) * (x2 - x0) - (x1 - x0) * (y2 - y0)),
-
       t =
           -(A * ray.origin.x + B * ray.origin.y + C * ray.origin.z + D) /
           (A * ray.direction.x + B * ray.direction.y + C * ray.direction.z),
@@ -169,11 +178,30 @@ pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
       y = t * ray.direction.y + ray.origin.y,
       z = t * ray.direction.z + ray.origin.z;
 
-  Vector ans(x, y, z);
+  // Vector ans(x, y, z);
   Vector normal(A, B, C);
   normal = normal.normalize();
-  ans.intersects = pointInTriangle(Vector(x, y, z), facet.v[0], facet.v[1], facet.v[2]);
-  return {ans, normal};
+  // ans.intersects = pointInTriangle(Vector(x, y, z), facet.v[0], facet.v[1], facet.v[2]);
+
+  Vector res(x, y, z);
+  Vector edge1 = facet.v[1] - facet.v[0],
+         edge2 = facet.v[2] - facet.v[0],
+         h = ray.direction.cross(edge2);
+  float a = edge1.dot(h);
+  if (a > -E && a < E)
+    return {res, normal};
+  float f = 1 / a;
+  Vector s = ray.origin - facet.v[0];
+  float u = f * s.dot(h);
+  if (u < 0.0 || u > 1.0)
+    return {res, normal};
+  Vector q = s.cross(edge1);
+  float v = f * ray.direction.dot(q);
+  if (v < 0.0 || u + v > 1.0)
+    return {res, normal};
+  float tt = f * edge2.dot(q);
+  res.intersects = (tt > E);
+  return {res, normal};
 }
 
 pair<Vector, Vector> Tracer::intersectsRectangle(Vector up, Vector down, Ray &ray)
@@ -197,6 +225,15 @@ void log(T content[])
   cout << endl;
 }
 
+float to_rad(float deg)
+{
+  return deg * M_PI / 180;
+}
+float to_deg(float rad)
+{
+  return rad * 180 / M_PI;
+}
+
 template <class T>
 vector<T> strsplit(string input, char delimiter)
 {
@@ -214,20 +251,15 @@ vector<T> strsplit(string input, char delimiter)
   return res;
 }
 
-template <typename T>
-bool sign(T value)
-{
-  return (value > 0) - (value < 0);
-}
-
 bool Tracer::pointInTriangle(Vector x, Vector a, Vector b, Vector c)
 {
-  return squareOfTriangle(a, b, c) == squareOfTriangle(x, a, b) +
-                                          squareOfTriangle(x, b, c) +
-                                          squareOfTriangle(x, a, c);
+  return areaOfTriangle(a, b, c) ==
+         (areaOfTriangle(x, a, b) +
+          areaOfTriangle(x, b, c) +
+          areaOfTriangle(x, a, c));
 }
 
-float Tracer::squareOfTriangle(Vector a, Vector b, Vector c)
+float Tracer::areaOfTriangle(Vector a, Vector b, Vector c)
 {
   Vector x = b - a, y = c - a;
   return abs(x.cross(y).length()) / 2;
