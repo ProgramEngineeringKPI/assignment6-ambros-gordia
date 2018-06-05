@@ -7,30 +7,30 @@
 #IncludeRegexTransform: 
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/main.cpp
-utils/render/Render.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h
+utils/render/Render.hpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.hpp
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.cpp
-Render.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h
+Render.hpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.hpp
 
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.h
-../rtree/RTree.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/render/Render.hpp
+../rtree/RTree.hpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.hpp
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.cpp
-RTree.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
+RTree.hpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.hpp
 
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.h
-../tracer/Tracer.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/rtree/RTree.hpp
+../tracer/Tracer.hpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.hpp
 
 /Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.cpp
-Tracer.h
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+Tracer.hpp
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.hpp
 
-/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.h
+/Users/nikitagordia/Documents/Workspace/CLionProjects/lab6/src/utils/tracer/Tracer.hpp
 fstream
 -
 string
