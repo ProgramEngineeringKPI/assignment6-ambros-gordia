@@ -81,22 +81,33 @@ void Vector::print()
   cout << "(" << x << ", " << y << ", " << z << ")\n";
 }
 
-Vertex::Vertex(Vector vec)
+Vertex::Vertex()
+{
+}
+
+Vertex::Vertex(Vector &vec)
 {
   pt = vec;
 }
 
-Facet::Facet(Vector v1, Vector v2, Vector v3)
+Facet::Facet(Vertex &v1, Vertex &v2, Vertex &v3)
 {
-  v[0] = v1;
-  v[1] = v2;
-  v[2] = v3;
+
+  v[0] = v1.pt;
+  v[1] = v2.pt;
+  v[2] = v3.pt;
 }
 
-Ray::Ray(Vector _origin, Vector _direction)
+Ray::Ray(Vector &_origin, Vector &_direction)
 {
   origin = _origin;
   direction = _direction;
+}
+
+Light::Light(Vector _position, float _intensity)
+{
+  position = _position;
+  intencity = _intensity;
 }
 
 void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet> &faces)
@@ -120,7 +131,8 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
         if (str[1] == ' ')
         {
           vector<string> coords = strsplit<string>(str, ' ');
-          vertices.push_back(Vertex(Vector(stof(coords[1]), stof(coords[2]), stof(coords[3]))));
+          Vector v = Vector(stof(coords[1]), stof(coords[2]), stof(coords[3]));
+          vertices.push_back(Vertex(v));
         }
         break;
       }
@@ -130,7 +142,7 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
         int v1 = stoi(strsplit<string>(pts[1], '/')[0]) - 1,
             v2 = stoi(strsplit<string>(pts[2], '/')[0]) - 1,
             v3 = stoi(strsplit<string>(pts[3], '/')[0]) - 1;
-        Facet f(vertices[v1].pt, vertices[v2].pt, vertices[v3].pt);
+        Facet f(vertices[v1], vertices[v2], vertices[v3]);
         faces.push_back(f);
         vertices[v1].facets.push_back(f);
         vertices[v2].facets.push_back(f);
@@ -149,7 +161,7 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
   cout << "Vertex count: " << vertices.size() << "\n Faces count: " << faces.size() << "\n";
 }
 
-pair<Vector, Vector> Tracer::intersectsTriangle(Facet facet, Ray &ray)
+pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
 {
   const float E = 1e-5;
   float
@@ -210,50 +222,6 @@ bool checkTriangle(Vector a, Vector b, Vector c)
 
 pair<Vector, Vector> Tracer::intersectsRectangle(Vector up, Vector down, Ray &ray)
 {
-  pair<Vector, Vector> res;
-
-  res = intersectsTriangle(Facet(up, Vector(up.x, down.y, up.z), Vector(up.x, up.y, down.z)), ray);
-  if (res.first)
-    return res;
-  res = intersectsTriangle(Facet(Vector(up.x, down.y, down.z), Vector(up.x, down.y, up.z), Vector(up.x, up.y, down.z)), ray);
-  if (res.first)
-    return res;
-
-  res = intersectsTriangle(Facet(Vector(down.x, down.y, up.z), down, Vector(up.x, down.y, down.z)), ray);
-  if (res.first)
-    return res;
-  res = intersectsTriangle(Facet(Vector(down.x, down.y, up.z), Vector(up.x, down.y, up.z), Vector(up.x, down.y, down.z)), ray);
-  if (res.first)
-    return res;
-
-  res = intersectsTriangle(Facet(down, Vector(up.x, up.y, down.z), Vector(up.x, down.y, down.z)), ray);
-  if (res.first)
-    return res;
-  res = intersectsTriangle(Facet(down, Vector(up.x, up.y, down.z), Vector(down.x, up.y, down.z)), ray);
-  if (res.first)
-    return res;
-
-  res = intersectsTriangle(Facet(Vector(down.x, down.y, up.z), up, Vector(up.x, down.y, up.z)), ray);
-  if (res.first)
-    return res;
-  res = intersectsTriangle(Facet(Vector(down.x, down.y, up.z), up, Vector(down.x, up.y, up.z)), ray);
-  if (res.first)
-    return res;
-
-  res = intersectsTriangle(Facet(Vector(up.x, up.y, down.z), Vector(down.x, up.y, up.z), Vector(down.x, up.y, down.z)), ray);
-  if (res.first)
-    return res;
-  res = intersectsTriangle(Facet(Vector(up.x, up.y, down.z), Vector(down.x, up.y, up.z), up), ray);
-  if (res.first)
-    return res;
-
-  res = intersectsTriangle(Facet(down, Vector(down.x, down.y, up.z), Vector(down.x, up.y, up.z)), ray);
-  if (res.first)
-    return res;
-  res = intersectsTriangle(Facet(down, Vector(down.x, up.y, down.z), Vector(down.x, up.y, up.z)), ray);
-  if (res.first)
-    return res;
-
   return {Vector(), Vector()};
 }
 

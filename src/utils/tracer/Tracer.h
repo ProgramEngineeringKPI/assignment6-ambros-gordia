@@ -38,29 +38,30 @@ struct Vector
 struct Vertex
 {
 	Vertex();
-	Vertex(Vector vec);
+	Vertex(Vector &vec);
 	Vector pt;
 	vector<Facet> facets;
 };
 
 struct Facet
 {
-	Facet(Vector v1, Vector v2, Vector v3);
+	Facet(Vertex &v1, Vertex &v2, Vertex &v3);
 	Vector v[3];
+	Vertex verts[3];
 	Vector n;
 };
 
 struct Ray
 {
-	Ray(Vector _origin, Vector _direction);
+	Ray(Vector &_origin, Vector &_direction);
 	Vector origin, direction; // dir is local vector
 };
 
 struct Camera
 {
 	Vector
-			position = Vector(5, 4, 1.5),
-			direction = Vector(-1, -0.7, -0.2),
+			position = Vector(5, 0, 3),
+			direction = Vector(-1, 0, -0.4),
 			top = Vector(0, 0, 1); // this vector is always lookin' upwards
 	int
 			resX = 512,
@@ -69,6 +70,13 @@ struct Camera
 			FOV = 60,		// degrees
 			FOVmm = 50, // millimeters
 			size = 1;
+};
+
+struct Light
+{
+	Light(Vector _position, float _intencity);
+	Vector position = Vector(0, 0, 0);
+	float intencity = 1;
 };
 
 template <typename T>
@@ -89,7 +97,7 @@ public:
 
 	// pair<Vector, Ray> intersectsTriangle(Facet facet, Ray ray); // nope, its not useful
 	// pair<Vector, Ray> intersectsRectangle(Vector up, Vector down, Ray ray);
-	pair<Vector, Vector> intersectsTriangle(Facet facet, Ray &ray);
+	pair<Vector, Vector> intersectsTriangle(Facet &facet, Ray &ray);
 	pair<Vector, Vector> intersectsRectangle(Vector up, Vector down, Ray &ray);
 
 private:
