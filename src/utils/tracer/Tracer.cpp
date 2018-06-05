@@ -84,24 +84,40 @@ void Vector::print()
     cout << "(" << x << ", " << y << ", " << z << ")\n";
 }
 
-Vertex::Vertex(Vector vec)
+Vertex::Vertex()
+{
+}
+
+Vertex::Vertex(Vector &vec)
 {
     pt = vec;
 }
 
+<<<<<<< HEAD
 Vertex::Vertex() {}
 
 Facet::Facet(Vector v1, Vector v2, Vector v3)
+=======
+Facet::Facet(Vector &v1, Vector &v2, Vector &v3)
+>>>>>>> geometry
 {
     v[0] = v1;
     v[1] = v2;
     v[2] = v3;
 }
 
-Ray::Ray(Vector _origin, Vector _direction)
+Ray::Ray() : origin(0, 0, 0), direction(0, 0, 0) {}
+
+Ray::Ray(Vector &_origin, Vector &_direction)
 {
     origin = _origin;
     direction = _direction;
+}
+
+Light::Light(Vector _position, float _intensity)
+{
+  position = _position;
+  intencity = _intensity;
 }
 
 void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet> &faces)
@@ -117,6 +133,7 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
     {
         while (file.good())
         {
+<<<<<<< HEAD
             getline(file, str);
             switch (str[0])
             {
@@ -145,6 +162,11 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
                 default:
                     break;
             }
+=======
+          vector<string> coords = strsplit<string>(str, ' ');
+          Vector v = Vector(stof(coords[1]), stof(coords[2]), stof(coords[3]));
+          vertices.push_back(Vertex(v));
+>>>>>>> geometry
         }
     }
     else
@@ -154,8 +176,9 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
     cout << "Vertex count: " << vertices.size() << "\nFacets count: " << faces.size() << "\n";
 }
 
-pair<Vector, Vector> Tracer::intersectsTriangle(Facet facet, Ray &ray)
+pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
 {
+<<<<<<< HEAD
     //cout<<"#Triangle"<<endl;
     const float E = 1e-5;
     float
@@ -208,6 +231,66 @@ pair<Vector, Vector> Tracer::intersectsTriangle(Facet facet, Ray &ray)
     float tt = f * edge2.dot(q);
     res.intersects = (tt > E);
     return {res, normal};
+=======
+  const float E = 1e-5;
+  float
+      x0 = facet.v[0].x,
+      y0 = facet.v[0].y,
+      z0 = facet.v[0].z,
+      x1 = facet.v[1].x,
+      y1 = facet.v[1].y,
+      z1 = facet.v[1].z,
+      x2 = facet.v[2].x,
+      y2 = facet.v[2].y,
+      z2 = facet.v[2].z,
+
+      A = (y1 - y0) * (z2 - z0) - (y2 - y0) * (z1 - z0),
+      B = (x2 - x0) * (z1 - z0) - (x1 - x0) * (z2 - z0),
+      C = (x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0),
+      D =
+          x0 * ((y2 - y0) * (z1 - z0) - (y1 - y0) * (z2 - z0)) +
+          y0 * ((x1 - x0) * (z2 - z0) - (x2 - x0) * (z1 - z0)) +
+          z0 * ((y1 - y0) * (x2 - x0) - (x1 - x0) * (y2 - y0)),
+      t =
+          -(A * ray.origin.x + B * ray.origin.y + C * ray.origin.z + D) /
+          (A * ray.direction.x + B * ray.direction.y + C * ray.direction.z),
+
+      x = t * ray.direction.x + ray.origin.x,
+      y = t * ray.direction.y + ray.origin.y,
+      z = t * ray.direction.z + ray.origin.z;
+
+  Vector normal(A, B, C);
+  normal = normal.normalize();
+
+  Vector res(x, y, z);
+  Vector edge1 = facet.v[1] - facet.v[0],
+         edge2 = facet.v[2] - facet.v[0],
+         h = ray.direction.cross(edge2);
+  float a = edge1.dot(h);
+  if (a > -E && a < E)
+    return {res, normal};
+  float f = 1 / a;
+  Vector s = ray.origin - facet.v[0];
+  float u = f * s.dot(h);
+  if (u < 0.0 || u > 1.0)
+    return {res, normal};
+  Vector q = s.cross(edge1);
+  float v = f * ray.direction.dot(q);
+  if (v < 0.0 || u + v > 1.0)
+    return {res, normal};
+  float tt = f * edge2.dot(q);
+  res.intersects = (tt > E);
+  return {res, normal};
+}
+
+bool checkTriangle(Vector a, Vector b, Vector c)
+{
+}
+
+pair<Vector, Vector> Tracer::intersectsRectangle(Vector up, Vector down, Ray &ray)
+{
+  return {Vector(), Vector()};
+>>>>>>> geometry
 }
 
 template <typename T>
