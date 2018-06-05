@@ -45,7 +45,7 @@ struct Vertex
 
 struct Facet
 {
-	Facet(Vertex &v1, Vertex &v2, Vertex &v3);
+	Facet(Vector &v1, Vector &v2, Vector &v3);
 	Vector v[3];
 	Vertex verts[3];
 	Vector n;
@@ -53,6 +53,7 @@ struct Facet
 
 struct Ray
 {
+	Ray();
 	Ray(Vector &_origin, Vector &_direction);
 	Vector origin, direction; // dir is local vector
 };

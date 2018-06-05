@@ -90,13 +90,14 @@ Vertex::Vertex(Vector &vec)
   pt = vec;
 }
 
-Facet::Facet(Vertex &v1, Vertex &v2, Vertex &v3)
+Facet::Facet(Vector &v1, Vector &v2, Vector &v3)
 {
-
-  v[0] = v1.pt;
-  v[1] = v2.pt;
-  v[2] = v3.pt;
+  v[0] = v1;
+  v[1] = v2;
+  v[2] = v3;
 }
+
+Ray::Ray() : origin(0, 0, 0), direction(0, 0, 0) {}
 
 Ray::Ray(Vector &_origin, Vector &_direction)
 {
@@ -142,7 +143,7 @@ void Tracer::parseOBJ(const char *fname, vector<Vertex> &vertices, vector<Facet>
         int v1 = stoi(strsplit<string>(pts[1], '/')[0]) - 1,
             v2 = stoi(strsplit<string>(pts[2], '/')[0]) - 1,
             v3 = stoi(strsplit<string>(pts[3], '/')[0]) - 1;
-        Facet f(vertices[v1], vertices[v2], vertices[v3]);
+        Facet f(vertices[v1].pt, vertices[v2].pt, vertices[v3].pt);
         faces.push_back(f);
         vertices[v1].facets.push_back(f);
         vertices[v2].facets.push_back(f);
@@ -190,10 +191,8 @@ pair<Vector, Vector> Tracer::intersectsTriangle(Facet &facet, Ray &ray)
       y = t * ray.direction.y + ray.origin.y,
       z = t * ray.direction.z + ray.origin.z;
 
-  // Vector ans(x, y, z);
   Vector normal(A, B, C);
   normal = normal.normalize();
-  // ans.intersects = pointInTriangle(Vector(x, y, z), facet.v[0], facet.v[1], facet.v[2]);
 
   Vector res(x, y, z);
   Vector edge1 = facet.v[1] - facet.v[0],

@@ -37,20 +37,24 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
   Vector plane_vec = main_camera.direction.normalize() * dist;
   Vector right = main_camera.direction.cross(main_camera.top).normalize();
 
+  float realX, realY;
+  Vector dx, dy, raydir;
+  pair<Vector, Vector> v;
+  Ray ray;
+
   for (int y = 0; y < main_camera.resY; y++)
   {
-    cout << "processed row..." << endl;
     for (int x = 0; x < main_camera.resX; x++)
     {
-      float realX = (x - main_camera.resX / 2) / (float)main_camera.resX;
-      float realY = (y - main_camera.resY / 2) / (float)main_camera.resY;
+      realX = (x - main_camera.resX / 2) / (float)main_camera.resX;
+      realY = (y - main_camera.resY / 2) / (float)main_camera.resY;
 
-      Vector dx = right * realX;
-      Vector dy = right.cross(main_camera.direction).normalize() * realY;
+      dx = right * realX;
+      dy = right.cross(main_camera.direction).normalize() * realY;
 
-      Vector raydir = dx + dy + plane_vec;
+      raydir = dx + dy + plane_vec;
 
-      Ray ray = Ray(main_camera.position, raydir);
+      ray = Ray(main_camera.position, raydir);
       float deg = 0;
 
       unsigned int index = (y * height + x) * colorBit - file_offset;
@@ -61,7 +65,7 @@ void Render(const char *input_file, string output_file, Camera &main_camera)
       for (; i < faces.size(); i++)
       {
         // pair<Vector, Vector> v = tr.intersectsTriangle(faces[i], Vector(-1, -1, -1), ray);
-        pair<Vector, Vector> v = tr.intersectsTriangle(faces[i], ray);
+        v = tr.intersectsTriangle(faces[i], ray);
         if (v.first && main_camera.direction.angle(v.second) > to_rad(90))
         {
           // float dist = (v.first - main_camera.position).length();
