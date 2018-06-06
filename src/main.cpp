@@ -3,7 +3,7 @@
 void Test0()
 {
   Camera main_camera = Camera();
-  Render("src/objects/shadify-sph.obj", "render.bmp", main_camera);
+  Render("src/objects/shadify-cub.obj", "render.bmp", main_camera);
 }
 
 // void Test1()

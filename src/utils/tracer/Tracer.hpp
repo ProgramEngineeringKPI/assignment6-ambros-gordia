@@ -79,7 +79,7 @@ struct Camera
 
 struct Light
 {
-    Vector position = Vector(3, 3, 3);
+    Vector position = Vector(2, -1, 4);
     float intensity = 1;
 };
 
