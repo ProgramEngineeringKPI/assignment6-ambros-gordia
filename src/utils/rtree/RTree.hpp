@@ -36,7 +36,7 @@ private:
     
     char makeDecision(Node *curr);
     
-    Node *recursiveSearch(Node *pos, Ray ray);
+    Node *recursiveSearch(Node *pos, Ray *ray);
     
 public:
     
@@ -45,7 +45,7 @@ public:
     void build(vector<Vertex> &v);
     
     //<bool = Result of intersection(false if not intersected, and true vise versa), Vector = normal>
-    pair<Vector, Vector> find(Ray ray);
+    pair<Vector, Vector> find(Ray *ray);
 };
 
 

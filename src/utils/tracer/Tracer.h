@@ -68,7 +68,7 @@ struct Camera
 			resX = 512,
 			resY = 512;
 	float
-			FOV = 60,		// degrees
+			FOV = 30,		// degrees
 			FOVmm = 50, // millimeters
 			size = 1;
 };
